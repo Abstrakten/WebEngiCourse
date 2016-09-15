@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
-  template: `test`
+  template: 'test'
 })
 
 export class MainComponent implements OnInit {

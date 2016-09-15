@@ -14,8 +14,8 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 
 // api routes
-app.use("/", mainRouter );
 app.use('/client', express.static(join(__dirname, '../client')));
+app.use("/", mainRouter );
 
 // error handlers
 // development error handler
@@ -36,7 +36,17 @@ if (app.get("env") === "development") {
 
 // catch 404 and forward to error handler
 app.use(function(req: express.Request, res: express.Response, next) {
-    res.redirect("/");
+    var options = {
+        root: __dirname + '/../public/',
+        headers: {
+            'x-timestamp': Date.now(),
+            'x-sent': true
+        }
+    };
+    res.sendFile("/index.html", options);
+    // let err = new Error("Not Found");
+    // next(err);
+    // res.redirect("/");
 });
 
 // production error handler
