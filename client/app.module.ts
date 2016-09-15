@@ -1,35 +1,37 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { provideAuth } from "angular2-jwt";
-import { HttpModule } from "@angular/http";
-import { NgSemanticModule } from "ng-semantic";
-
-import { AppComponent }  from './app.component';
-import { routing } from "./routes";
-import { HelloComponent } from "./components/shared/hello.component";
-import { ContactModule } from "./modules/contact/contact.module";
-import { HomeModule } from "./modules/home/home.module";
+import { FormsModule } from '@angular/forms';
+import { HttpModule, JsonpModule }  from '@angular/http';
+import { InMemoryWebApiModule }     from 'angular2-in-memory-web-api';
+import { AppComponent }             from './app.component';
+import { routing } from "./app.routes";
+import { MainComponent } from "./components/main/main.component";
+import { NotFoundComponent } from "./components/notFound/notFound.component";
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        HttpModule,
-        NgSemanticModule,
-        ContactModule,
-        HomeModule,
-        routing
-    ],
-    providers: [
-        provideAuth({
-            globalHeaders: [{"Content-type": "application/json"}],
-            newJwtError: true,
-            noTokenScheme: true
-        })
-    ],
-    declarations: [ HelloComponent, AppComponent ],
-    bootstrap:    [ AppComponent ],
-    schemas: [
-        CUSTOM_ELEMENTS_SCHEMA
-    ]
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    JsonpModule,
+    routing,
+  ],
+  declarations: [
+    AppComponent,
+    MainComponent,
+    NotFoundComponent
+  ],
+  bootstrap: [ AppComponent ]
 })
-export class AppModule {}
+export class AppModule { }
+
+
+
+
+
+
+/*
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/

@@ -2,9 +2,7 @@ import * as express from "express";
 import { join } from "path";
 import * as favicon from "serve-favicon";
 import { json, urlencoded } from "body-parser";
-
-import { loginRouter } from "./routes/login";
-import { protectedRouter } from "./routes/protected";
+import { mainRouter } from "./routes/main";
 
 const app: express.Application = express();
 app.disable("x-powered-by");
@@ -16,9 +14,7 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 
 // api routes
-app.use("/api", protectedRouter);
-app.use("/login", loginRouter);
-
+app.use("/", mainRouter );
 app.use('/client', express.static(join(__dirname, '../client')));
 
 // error handlers
@@ -40,8 +36,7 @@ if (app.get("env") === "development") {
 
 // catch 404 and forward to error handler
 app.use(function(req: express.Request, res: express.Response, next) {
-    let err = new Error("Not Found");
-    next(err);
+    res.redirect("/");
 });
 
 // production error handler
