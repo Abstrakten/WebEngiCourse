@@ -1,11 +1,11 @@
 import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './components/main/main.component';
 import { NotFoundComponent } from './components/notFound/notFound.component';
-import { SecoundComponent } from "./components/secound/secound.component";
+import { SecondComponent } from "./components/second/second.component";
 
 export const routes: Routes = [
     { path: "", component: MainComponent },
-    { path: "secound", component: SecoundComponent },
+    { path: "second", component: SecondComponent },
     { path: '**', component: NotFoundComponent }
 ];
 

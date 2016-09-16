@@ -36,6 +36,7 @@ if (app.get("env") === "development") {
 
 // catch 404 and forward to error handler
 app.use(function(req: express.Request, res: express.Response, next) {
+    
     var options = {
         root: __dirname + '/../public/',
         headers: {

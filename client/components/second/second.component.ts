@@ -1,22 +1,29 @@
 import { Component, OnInit }  from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import { CounterObj, CounterService } from "../../services/counter.service"
 
 @Component({
-  template: "page 2"
+  template: "{{x}}",
+  providers: [CounterService]
 })
 
-export class SecoundComponent implements OnInit {
+export class SecondComponent implements OnInit {
+
+	private x:number = 0;
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private counterService: CounterService
   ) { 
   
   }
 
   ngOnInit() {
-
+  	this.counterService.getCounter().then((obj) => {
+  		console.log(obj)
+  		this.x = obj.data
+  	})
   }
 
 }
