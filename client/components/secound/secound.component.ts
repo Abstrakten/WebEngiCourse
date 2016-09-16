@@ -3,12 +3,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
-  templateUrl: "/client/components/main/main.component.html"
+  template: "page 2"
 })
 
-export class MainComponent implements OnInit {
-
-  private items = [["google", "http://google.com"], ["reddit", "http://reddit.com/"], ["facebook", "http://facebook.com"]]
+export class SecoundComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
