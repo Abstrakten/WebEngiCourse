@@ -32,6 +32,9 @@
     "jsonwebtoken": "^5.7.0",
     "serve-favicon": "~2.3.0",
     "typescript": "^2.0.2",
+    "basex": "^0.7.0",
+    "basex-standalone": "^1.4.0",
+    "xml": "^1.0.1",
     "typings": "^1.3.2"
   },
   "devDependencies": {

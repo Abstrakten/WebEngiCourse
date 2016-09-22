@@ -19,5 +19,38 @@ mainRouter.post("/counter", function(req, res, next ) {
 })
 
 
+mainRouter.get("/pis.xml", function(req, res, next) {
+    var xml = require('xml');
+    var basex  = require("basex");
+    var client = new basex.Session("127.0.0.1", 1984, "admin", "admin");
+    basex.debug_mode = false;
+
+    let query = `let $courses := doc("/home/zander/WebEngiCourse/public/reed.xml")/root/course[reg_num>100]
+    return <html>
+    <body>
+    <ul>
+    {
+        for $x in $courses
+        where $x/reg_num>10000
+        return <li> { data($x/title) } </li>
+    }
+    </ul>
+    </body>
+    </html>
+    `;
+
+    client.execute('xquery ' + query, function(err, rep) { 
+        if(err) { 
+            next(err);
+        }
+        else { 
+            res.set('Content-Type', 'text/html');
+            res.send(rep.result);
+        }
+    });
+
+})
+
+
 
 export { mainRouter }
